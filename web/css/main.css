@@ -915,6 +915,10 @@ h2.title {
   font-size: 14px;
   font-weight: 400;
   color: #696763;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
 }
 
 .productinfo img{
@@ -972,6 +976,10 @@ h2.title {
   font-size: 14px;
   font-weight: 400;
   color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
 }
 
 
