@@ -1,4 +1,5 @@
 <?php
+use \yii\helpers\Url;
 use yii\helpers\Html;
 ?>
 
@@ -66,7 +67,7 @@ use yii\helpers\Html;
                                         <div class="product-overlay">
                                             <div class="overlay-content">
                                                 <h2>$<?= $product->price ?></h2>
-                                                <p><?= $product->name ?></p>
+                                                <p><a href="<?= Url::to(['product/view', 'id' => $product->id]) ?>"><?= $product->name ?></a></p>
                                                 <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                             </div>
                                         </div>
