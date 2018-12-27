@@ -8,7 +8,7 @@ use Yii;
 
 class ProductController extends AppController
 {
-    public function actionView($id)
+    public function actionView()
     {
         $id = Yii::$app->request->get('id');
 
