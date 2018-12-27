@@ -18,6 +18,10 @@ class ProductController extends AppController
         // Жадная загрузка
         //$product = Product::find()->with('category')->where(['id' => $id])->limit(1)->one();
 
+        if (empty($product)) {
+            throw new \yii\web\HttpException(404, 'Такого товара не существует');
+        }
+
         // Популярные товары
         $hits = Product::find()->where(['hit' => '1'])->limit(6)->all();
         $this->setMeta('Eshoper | ' . $product->name, $product->keywords, $product->description);
