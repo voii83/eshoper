@@ -1423,6 +1423,9 @@ h2.title {
   font-size: 14px;
 }
 
+.del-item {
+  cursor: pointer;
+}
 
 /*************************
 *******404 CSS******

@@ -118,16 +118,10 @@ use yii\helpers\Html;
                                 <div class="productinfo text-center">
                                     <?= Html::img("@web/images/home/{$hit->img}", ['alt' => $hit->name]) ?>
                                     <h2>$<?= $hit->price ?></h2>
-                                    <p><?= $hit->name ?></p>
-                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                    <p><a href="<?= Url::to(['product/view', 'id' => $hit->id]) ?>"><?= $hit->name ?></a></p>
+                                    <a href="<?= \yii\helpers\Url::to(['cart/add', 'id' => $hit->id])?>" data-id="<?= $hit->id?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                 </div>
-                                <div class="product-overlay">
-                                    <div class="overlay-content">
-                                        <h2>$<?= $hit->price ?></h2>
-                                        <p><a href="<?= Url::to(['product/view', 'id' => $hit->id]) ?>"><?= $hit->name ?></a></p>
-                                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                    </div>
-                                </div>
+
                                 <?php if ($hit->new) : ?>
                                 <?= Html::img("@web/images/home/new.png", ['alt' => 'Новинка', 'class' => 'new']) ?>
                                 <?php endif; ?>
