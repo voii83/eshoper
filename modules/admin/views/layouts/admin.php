@@ -19,7 +19,7 @@ LtAppAsset::register($this);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
-    <title><?= Html::encode($this->title) ?></title>
+    <title>Админка | <?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 
     <link rel="shortcut icon" href="images/ico/favicon.ico">
@@ -95,7 +95,7 @@ LtAppAsset::register($this);
                     <div class="shop-menu pull-right">
                         <ul class="nav navbar-nav">
                             <?php if (!Yii::$app->user->isGuest) :?>
-                            <li><a href="<?= \yii\helpers\Url::to(['/site/logout']) ?>"><i class="fa fa-user"></i> <?= Yii::$app->user->identity['username'] ?> (Выход)</a></li>
+                                <li><a href="<?= \yii\helpers\Url::to(['/site/logout']) ?>"><i class="fa fa-user"></i> <?= Yii::$app->user->identity['username'] ?> (Выход)</a></li>
                             <?php endif; ?>
                             <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
                             <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
@@ -155,7 +155,9 @@ LtAppAsset::register($this);
     </div><!--/header-bottom-->
 </header><!--/header-->
 
-<?= $content; ?>
+<div class="container">
+    <?= $content; ?>
+</div>
 
 <footer id="footer"><!--Footer-->
     <div class="footer-top">
@@ -318,10 +320,10 @@ LtAppAsset::register($this);
 <?php
 
 \yii\bootstrap\Modal::begin([
-        'header' => '<h2>Корзина</h2>',
-        'id' => 'cart',
-        'size' => 'modal-lg',
-        'footer' => '<button type="button" class="btn btn-default" data-dismiss="modal">Продолжить покупки</button>
+    'header' => '<h2>Корзина</h2>',
+    'id' => 'cart',
+    'size' => 'modal-lg',
+    'footer' => '<button type="button" class="btn btn-default" data-dismiss="modal">Продолжить покупки</button>
                     <a href="'. \yii\helpers\Url::to(['cart/view']).'" class="btn btn-success">Оформить заказ</a>
                     <button type="button" class="btn btn-danger" onclick="clearCart()">Очистить корзину</button>',
 ]);
