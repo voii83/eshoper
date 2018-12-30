@@ -106,6 +106,23 @@ class CartController extends AppController{
                 $this->saveOrderItems($session['cart'], $order->id);
                 Yii::$app->session->setFlash('success', 'Ваш заказ принят. Менеджер вскоре свяжется с вами.');
 
+                // Отправка письма
+                // Так же можно реализовать отправку заказа в CRM (например Bitrix 24) и в 1с
+
+                // Письмо для заказвшего товар
+                Yii::$app->mailer->compose('order', compact('session'))
+                    ->setFrom([Yii::$app->params['managerEmail'] => 'Eshoper'])
+                    ->setTo($order->email)
+                    ->setSubject('Заказ')
+                    ->send();
+                // Письмо для администратора интернет магазина
+                Yii::$app->mailer->compose('order', compact('session'))
+                    ->setFrom([Yii::$app->params['managerEmail'] => 'Eshoper'])
+                    ->setTo(Yii::$app->params['managerEmail'])
+                    ->setSubject('Заказ')
+                    ->send();
+
+                // Очищаем корзину
                 $session->remove('cart');
                 $session->remove('cart.qty');
                 $session->remove('cart.sum');
