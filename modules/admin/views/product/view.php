@@ -9,7 +9,6 @@ use yii\widgets\DetailView;
 $this->title = $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Products', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
-\yii\web\YiiAsset::register($this);
 ?>
 <div class="product-view">
 
@@ -25,40 +24,26 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
     </p>
+    <?php $img = $model->getImage(); ?>
 
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
             'id',
-            [
-                'attribute' => 'category_id',
-                'value' => $model->category->name ? $model->category->name : '',
-            ],
+            'category_id',
             'name',
             'content:html',
             'price',
             'keywords',
             'description',
             [
-                'attribute' => 'img',
-                'value' => Html::img("@web/images/home/{$model->img}", ['alt' => "{$model->name}"]),
+                'attribute' => 'image',
+                'value' => "<img src='{$img->getUrl()}'>",
                 'format' => 'html',
             ],
-            [
-                'attribute' => 'hit',
-                'value' => !$model->hit ? '<span class="text-danger">Нет</span>' : '<span class="text-success">Да</span>',
-                'format' => 'html',
-            ],
-            [
-                'attribute' => 'new',
-                'value' => !$model->new ? '<span class="text-danger">Нет</span>' : '<span class="text-success">Да</span>',
-                'format' => 'html',
-            ],
-            [
-                'attribute' => 'sale',
-                'value' => !$model->sale ? '<span class="text-danger">Нет</span>' : '<span class="text-success">Да</span>',
-                'format' => 'html',
-            ],
+            'hit',
+            'new',
+            'sale',
         ],
     ]) ?>
 
