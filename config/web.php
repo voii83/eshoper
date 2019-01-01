@@ -76,6 +76,18 @@ $config = [
 
     ],
     'params' => $params,
+    'controllerMap' => [
+        'elfinder' => [
+            'class' => 'mihaildev\elfinder\PathController',
+            'access' => ['@'],
+            'root' => [
+                'baseUrl'=>'@web',
+                'basePath'=>'@webroot',
+                'path' => 'upload/global',
+                'name' => 'Global',
+            ],
+        ]
+    ],
 ];
 
 if (YII_ENV_DEV) {

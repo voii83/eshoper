@@ -25,6 +25,9 @@ class MenuWidget extends Widget
             case  'select' :
                 $this->tpl .= '.php';
                 break;
+            case  'select_product' :
+                $this->tpl .= '.php';
+                break;
             default :
                 $this->tpl = 'menu.php';
                 break;
